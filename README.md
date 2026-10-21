@@ -1,5 +1,26 @@
 ## About
+# EnWhisperStream
 
-This implements offline speech recognition for mobile applications using whisper libraries.
+Приложение для Android для потоковой транскрибации английской речи в реальном времени. 
+Использует модели Whisper (ONNX) для распознавания и Media3 (ExoPlayer) для перехвата и обработки аудиопотоков (HLS/Progressive).
+
+## Особенности
+- 🎧 Поддержка HLS (.m3u8) и прямых аудиопотоков.
+- 🧠 Локальная транскрибация с помощью Whisper small (int8) через ONNX Runtime.
+- 🔄 Умная система буферизации (кольцевой буфер) и очередности блоков аудио.
+- 🌐 Автоматическое переподключение при потере сети.
+- ⏸️ Пауза/Возобновление воспроизведения и транскрибации.
+
+## Установка и использование
+1. При первом запуске откроется `SetupActivity`.
+2. Нажмите **Download Model**, чтобы скачать архив `whisper_small_int8.zip` с HuggingFace.
+3. Нажмите **Install from ZIP** и выберите скачанный архив. Файлы распакуются во внутреннюю память приложения.
+4. Выберите радиостанцию из списка (Aljazeera, BBC, CNN и др.) или вставьте свою ссылку на стрим.
+5. Нажмите **Start**. Первые результаты транскрибации появятся через 15-20 секунд (размер аудио-блока для обработки).
+
+## Архитектура
+- `Media3StreamProcessor`: Перехват PCM-данных из ExoPlayer через `TeeAudioProcessor`.
+- `StreamingWhisperProcessor`: Асинхронная нарезка аудио на блоки по 15 секунд, транскрибация и последовательное воспроизведение.
+- `AudioConverter`: Ресемплинг и конвертация стерео/нестандартных частот в 16kHz Mono (требование Whisper).
 
 Check the [releases](https://github.com/ItIsAllForKira?tab=repositories) for my apps.
