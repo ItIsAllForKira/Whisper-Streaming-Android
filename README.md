@@ -4,6 +4,8 @@
 Приложение для Android для потоковой транскрибации английской речи в реальном времени. 
 Использует модели Whisper (ONNX) для распознавания и Media3 (ExoPlayer) для перехвата и обработки аудиопотоков (HLS/Progressive).
 
+<img width="864" height="1920" alt="7a9f6017-4cdd-4875-b985-8c28dc6bb0aa" src="https://github.com/user-attachments/assets/508b2eaf-7c17-4b69-bedc-d0ec25799ff0" />
+
 ## Особенности
 - 🎧 Поддержка HLS (.m3u8) и прямых аудиопотоков.
 - 🧠 Локальная транскрибация с помощью Whisper small (int8) через ONNX Runtime.
