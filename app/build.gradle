@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'org.whisper.enstream'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "org.whisper.enstream"
+        minSdk 28
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    // Media3 для потокового аудио
+    implementation "androidx.media3:media3-exoplayer:1.9.3"
+    implementation "androidx.media3:media3-exoplayer-hls:1.9.3"
+    implementation "androidx.media3:media3-common:1.9.3"
+
+    // AndroidX
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.preference:preference:1.2.1'
+
+    // ONNX Runtime для Whisper
+    implementation 'com.microsoft.onnxruntime:onnxruntime-android:1.24.3'
+    implementation 'com.microsoft.onnxruntime:onnxruntime-extensions-android:0.13.0'
+}
